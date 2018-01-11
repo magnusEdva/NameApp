@@ -1,11 +1,14 @@
 package hvl.nameapp;
 
+import android.content.Intent;
 import android.content.SharedPreferences;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
+import android.view.View;
 
-import java.util.Set;
 import java.util.HashSet;
+import java.util.Set;
 public class MainActivity extends AppCompatActivity {
 
     @Override
@@ -13,7 +16,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         dummyInitiate();
 
-
+        Log.e("fuck","?");
         setContentView(R.layout.activity_main);
     }
 
@@ -24,12 +27,18 @@ public class MainActivity extends AppCompatActivity {
         Student Kolbein = new Student("Kolbein Horeson Foldøy","@drawable/kolbein");
 
         Set<String> students = new HashSet<String>();
+        students.add(Magnus.toString());
+        students.add(Steffen.toString());
+        students.add(Kolbein.toString());
 
-        SharedPreferences sharedPref = getPreferences(MODE_PRIVATE);
-
+        SharedPreferences sharedPref = getSharedPreferences("Student_shared_data",MODE_PRIVATE);
         SharedPreferences.Editor editor = sharedPref.edit();
         editor.putStringSet("students", students);
+        editor.apply();
+    }
 
-        editor.commit();
+    public void openNameList(View view){
+        Intent intent = new Intent(this, NameListActivity.class);
+        startActivity(intent);
     }
 }
