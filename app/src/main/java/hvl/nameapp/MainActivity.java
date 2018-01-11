@@ -22,9 +22,9 @@ public class MainActivity extends AppCompatActivity {
 
 
     public void dummyInitiate(){
-        Student Magnus = new Student("Magnus Edvardsen", "hvl.nameapp:mipmap/magnus");
-        Student Steffen = new Student("Steffen","hvl.nameapp:drawable/steffen");
-        Student Kolbein = new Student("Kolbein Horeson Foldøy","hvl.nameapp:drawable/kolbein");
+        Student Magnus = new Student("Magnus Edvardsen", "magnus");
+        Student Steffen = new Student("Steffen","steffen");
+        Student Kolbein = new Student("Kolbein Horeson Foldøy","kolbein");
 
         Set<String> students = new HashSet<String>();
         students.add(Magnus.toString());
