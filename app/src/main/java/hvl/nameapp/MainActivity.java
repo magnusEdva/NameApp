@@ -19,9 +19,9 @@ public class MainActivity extends AppCompatActivity {
 
 
     public void dummyInitiate(){
-        Student Magnus = new Student("Magnus Edvardsen", "@drawable/magnus.jpg");
-        Student Steffen = new Student("Steffen","@drawable/steffen.jpg");
-        Student Kolbein = new Student("Kolbein Horeson Foldøy","@drawable/kolbein.jpg");
+        Student Magnus = new Student("Magnus Edvardsen", "@mipmap/magnus");
+        Student Steffen = new Student("Steffen","@drawable/steffen");
+        Student Kolbein = new Student("Kolbein Horeson Foldøy","@drawable/kolbein");
 
         Set<String> students = new HashSet<String>();
 
