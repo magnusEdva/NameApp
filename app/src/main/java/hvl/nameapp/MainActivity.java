@@ -16,15 +16,15 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         dummyInitiate();
 
-        Log.e("fuck","?");
+
         setContentView(R.layout.activity_main);
     }
 
 
     public void dummyInitiate(){
-        Student Magnus = new Student("Magnus Edvardsen", "@mipmap/magnus");
-        Student Steffen = new Student("Steffen","@drawable/steffen");
-        Student Kolbein = new Student("Kolbein Horeson Foldøy","@drawable/kolbein");
+        Student Magnus = new Student("Magnus Edvardsen", "hvl.nameapp:mipmap/magnus");
+        Student Steffen = new Student("Steffen","hvl.nameapp:drawable/steffen");
+        Student Kolbein = new Student("Kolbein Horeson Foldøy","hvl.nameapp:drawable/kolbein");
 
         Set<String> students = new HashSet<String>();
         students.add(Magnus.toString());
