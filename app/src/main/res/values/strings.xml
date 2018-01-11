@@ -5,5 +5,5 @@
     <string name="title_activity_learning_mode">LearningModeActivity</string>
     <string name="mainButtonOne">vis navn</string>
     <string name="mainButtoneTwo">vis bilder</string>
-    <string name="mainButtonThree">Lærings modus</string>
+    <string name="mainButtonThree">Læringsmodus</string>
 </resources>
