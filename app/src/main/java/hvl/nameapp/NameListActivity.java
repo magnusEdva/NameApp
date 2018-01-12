@@ -36,6 +36,8 @@ public class NameListActivity extends AppCompatActivity {
         setContentView(R.layout.activity_name_list);
         createStudents();
         createList();
+
+
     }
 
     public void createList(){
@@ -47,13 +49,24 @@ public class NameListActivity extends AppCompatActivity {
             public void onItemClick(AdapterView<?> parent, View v,
                                     int position, long id) {
                 ImageView image = (ImageView) findViewById(R.id.imageView);
-                int iid = getResources().getIdentifier(students.get((int)id).getPicture(), "image", getPackageName());
-
-
+                int iid = getResources().getIdentifier(students.get((int)id).getPicture(), "mipmap", getPackageName());
+                image.setImageResource(iid);
                 image.setVisibility(View.VISIBLE);
+
+            }
+        });
+        ImageView image = (ImageView) findViewById(R.id.imageView);
+        image.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                ImageView i = (ImageView) findViewById(R.id.imageView);
+                Log.e("flyForbud", "lol");
+                i.setVisibility(View.GONE);
             }
         });
     }
+
+
 
     public void createStudents(){
         students = new ArrayList<Student>();
