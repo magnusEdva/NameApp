@@ -52,7 +52,6 @@ public class NameListActivity extends AppCompatActivity {
                 int iid = getResources().getIdentifier(students.get((int)id).getPicture(), "mipmap", getPackageName());
                 image.setImageResource(iid);
                 image.setVisibility(View.VISIBLE);
-
             }
         });
         ImageView image = (ImageView) findViewById(R.id.imageView);
@@ -60,7 +59,7 @@ public class NameListActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 ImageView i = (ImageView) findViewById(R.id.imageView);
-                Log.e("flyForbud", "lol");
+
                 i.setVisibility(View.GONE);
             }
         });
