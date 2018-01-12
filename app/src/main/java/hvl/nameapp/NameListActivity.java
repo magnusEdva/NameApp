@@ -53,7 +53,6 @@ public class NameListActivity extends AppCompatActivity {
                 image.setVisibility(View.VISIBLE);
             }
         });
-
     }
 
     public void createStudents(){
