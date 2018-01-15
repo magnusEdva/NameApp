@@ -39,6 +39,11 @@ public class LearningActivity extends AppCompatActivity {
         correctName = students.get(StudentId).getName();
 
     }
+    @Override
+    protected  void onDestroy(){
+        Toast.makeText(LearningActivity.this, "Score: " + hiScore, Toast.LENGTH_SHORT).show();
+        super.onDestroy();
+    }
     //fetches arraylist with students from Intent.
     private ArrayList<StudentDataModel> getStudents(){
         return (ArrayList<StudentDataModel>) getIntent().getSerializableExtra("students");
@@ -57,7 +62,7 @@ public class LearningActivity extends AppCompatActivity {
                String comparer = text.getText().toString();
                 if(comparer.equals(correctName)){
                     hiScore++;
-                    Toast.makeText(LearningActivity.this, "Good job", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(LearningActivity.this, "Good job, current score: " + hiScore, Toast.LENGTH_SHORT).show();
                 }
             }
         });
