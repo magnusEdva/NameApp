@@ -1,5 +1,6 @@
 package hvl.nameapp;
 
+import android.Manifest;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -14,6 +15,9 @@ public class AddNewStudent extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        requestPermissions(new String[]{Manifest.permission.CAMERA},
+                10);
         setContentView(R.layout.activity_add_new_student);
 
         // Linking Elements in the layout to Java code.
