@@ -38,7 +38,6 @@ public class AddNewStudent extends AppCompatActivity {
         addNewBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Toast.makeText(getApplicationContext(), "Ingen funksjonalitet ennå", Toast.LENGTH_SHORT).show();
 
                 // Hente navn fra EditText
                 EditText navnET = (EditText) findViewById(R.id.nameInput);
@@ -51,6 +50,13 @@ public class AddNewStudent extends AppCompatActivity {
                     Intent intent = getIntent();
                     intent.putExtra("student", student);
                     setResult(RESULT_OK, intent);
+                    Toast.makeText(getApplicationContext(), navnString + " er lagt til!", Toast.LENGTH_SHORT).show();
+                } else if (navnString.length() < 1 && imageBitmap == null) {
+                    Toast.makeText(getApplicationContext(), "Mangler bilde og navn", Toast.LENGTH_SHORT).show();
+                } else if (navnString.length() < 1) {
+                    Toast.makeText(getApplicationContext(), "Mangler navn", Toast.LENGTH_SHORT).show();
+                } else if (imageBitmap == null) {
+                    Toast.makeText(getApplicationContext(), "Mangler bilde", Toast.LENGTH_SHORT).show();
                 }
                 finish();
             }
