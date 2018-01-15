@@ -7,7 +7,7 @@
     tools:context="hvl.nameapp.LearningActivity">
 
     <ImageView
-        android:id="@+id/imageView2"
+        android:id="@+id/LearningGameImage"
         android:layout_width="366dp"
         android:layout_height="289dp"
         app:srcCompat="@color/colorPrimary"
@@ -15,14 +15,21 @@
         tools:layout_editor_absoluteY="16dp" />
 
     <EditText
-        android:id="@+id/editText"
+        android:id="@+id/LearningGameText"
         android:layout_width="232dp"
         android:layout_height="56dp"
+        android:layout_marginTop="-123dp"
         android:ems="10"
         android:inputType="textPersonName"
         android:text="Name"
         app:layout_constraintTop_toTopOf="parent"
-        tools:layout_editor_absoluteX="59dp"
-        android:layout_marginTop="399dp"
-        tools:layout_editor_absoluteY="386dp" />
+        tools:layout_editor_absoluteX="496dp" />
+
+    <Button
+        android:id="@+id/LearningGameCompare"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Button"
+        tools:layout_editor_absoluteX="158dp"
+        tools:layout_editor_absoluteY="467dp" />
 </android.support.constraint.ConstraintLayout>

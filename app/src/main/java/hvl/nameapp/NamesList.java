@@ -35,8 +35,8 @@ public class NamesList extends ListActivity {
                 ImageView profileImage = (ImageView) findViewById(R.id.profilePicture_namelist);
 
                 // gets the ID (not index) of the image resource, and sets it on screen, also set the image to visible.
-                int resourcePath = getResources().getIdentifier(students.get((int) id).getPicture(),"drawable",getPackageName());
-                profileImage.setImageResource(resourcePath);
+                // int resourcePath = getResources().getIdentifier(students.get((int) id).getPicture(),"drawable",getPackageName());
+                profileImage.setImageBitmap(students.get((int) id).getPicture());
                 profileImage.setVisibility(View.VISIBLE);
             }
         });

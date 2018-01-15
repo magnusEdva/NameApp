@@ -1,5 +1,9 @@
 package hvl.nameapp;
 
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+
+import java.io.ByteArrayOutputStream;
 import java.io.Serializable;
 
 /**
@@ -7,10 +11,15 @@ import java.io.Serializable;
  */
 
 public class StudentDataModel implements Serializable {
-    String name;
-    String picture;
+    private String name;
+    private byte [] picture;
 
-    public StudentDataModel(String name, String picture){
+    public StudentDataModel(String name, Bitmap picture){
+        this.name = name;
+        this.picture = bytifyPicture(picture);
+    }
+
+    public StudentDataModel(String name, byte[] picture){
         this.name = name;
         this.picture = picture;
     }
@@ -23,11 +32,17 @@ public class StudentDataModel implements Serializable {
         this.name = name;
     }
 
-    public String getPicture() {
-        return picture;
+    public Bitmap getPicture() {return BitmapFactory.decodeByteArray(picture, 0, picture.length);}
+
+    public void setPicture(Bitmap picture) {
+        this.picture = bytifyPicture(picture);
     }
 
-    public void setPicture(String picture) {
-        this.picture = picture;
+    public void setPicture(byte[] picture){ this.picture = picture; }
+
+    public byte[] bytifyPicture (Bitmap picture){
+        ByteArrayOutputStream stream = new ByteArrayOutputStream();
+        picture.compress(Bitmap.CompressFormat.PNG, 100, stream);
+        return stream.toByteArray();
     }
 }

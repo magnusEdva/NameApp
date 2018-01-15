@@ -56,7 +56,7 @@ public class ImagesList extends Activity {
     private String[] getAllImages(){
         String[] studentImages = new String[students.size()];
         for (int i = 0; i < studentImages.length; i++) {
-            studentImages[i] = students.get(i).getPicture();
+            // studentImages[i] = students.get(i).getPicture();
         }
         return  studentImages;
     }

@@ -1,6 +1,8 @@
 package hvl.nameapp;
 
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
@@ -62,9 +64,12 @@ public class HomeScreen extends AppCompatActivity {
 
     // Sets dummy data.
     private void onInit(){
-        StudentDataModel magnus = new StudentDataModel("Magnus Edvardsen", "elmo");
-        StudentDataModel steffen = new StudentDataModel("Steffen Andre Hagen", "zoidberg");
-        StudentDataModel kolbein = new StudentDataModel("Kolbein Toresson Foldøy", "panda");
+        Bitmap b = BitmapFactory.decodeResource(getResources(), R.drawable.elmo);
+        StudentDataModel magnus = new StudentDataModel("Magnus Edvardsen", b);
+        b = BitmapFactory.decodeResource(getResources(), R.drawable.zoidberg);
+        StudentDataModel steffen = new StudentDataModel("Steffen Andre Hagen", b);
+        b = BitmapFactory.decodeResource(getResources(), R.drawable.panda);
+        StudentDataModel kolbein = new StudentDataModel("Kolbein Toresson Foldøy", b);
         students.add(magnus);
         students.add(steffen);
         students.add(kolbein);
