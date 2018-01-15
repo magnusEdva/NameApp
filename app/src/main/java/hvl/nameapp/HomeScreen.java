@@ -65,11 +65,11 @@ public class HomeScreen extends AppCompatActivity {
     // Sets dummy data.
     private void onInit(){
         Bitmap b = BitmapFactory.decodeResource(getResources(), R.drawable.elmo);
-        StudentDataModel magnus = new StudentDataModel("Magnus Edvardsen", b);
+        StudentDataModel magnus = new StudentDataModel("Magnus", b);
         b = BitmapFactory.decodeResource(getResources(), R.drawable.zoidberg);
-        StudentDataModel steffen = new StudentDataModel("Steffen Andre Hagen", b);
+        StudentDataModel steffen = new StudentDataModel("Steffen", b);
         b = BitmapFactory.decodeResource(getResources(), R.drawable.panda);
-        StudentDataModel kolbein = new StudentDataModel("Kolbein Toresson Foldøy", b);
+        StudentDataModel kolbein = new StudentDataModel("Kolbein", b);
         students.add(magnus);
         students.add(steffen);
         students.add(kolbein);
