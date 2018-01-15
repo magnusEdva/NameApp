@@ -60,6 +60,14 @@ public class HomeScreen extends AppCompatActivity {
                 startActivity(redirectToLearningGame);
             }
         });
+
+        addUserBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent redirectToAddNew = new Intent(HomeScreen.this, AddNewStudent.class);
+                startActivity(redirectToAddNew);
+            }
+        });
     }
 
     // Sets dummy data.

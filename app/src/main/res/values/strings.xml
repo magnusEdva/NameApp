@@ -8,6 +8,7 @@
     <string name="students">students</string>
     <string name="wrongGuess">Du gjettet feil. Riktig svar: </string>
     <string name="guess">Gjett!</string>
-    <string name="edit_text_name">Navn</string>
-    <string name="legg_til">Legg til</string>
+    <string name="editTextName">Navn</string>
+    <string name="legg_til">Legg til student</string>
+    <string name="avbryt">Avbryt</string>
 </resources>
