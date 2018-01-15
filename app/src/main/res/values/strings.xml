@@ -3,7 +3,9 @@
     <string name="visNavn">Vis Navn</string>
     <string name="visBilder">Vis Bilder</string>
     <string name="learning">Læringsmodus</string>
-    <string name="correctGuess">Good job, current score: </string>
+    <string name="correctGuess">Bra jobbet, scoren er: </string>
     <string name="showScore">Score: </string>
     <string name="students">students</string>
+    <string name="wrongGuess">Du gjettet feil. Riktig svar: </string>
+    <string name="guess">Gjett!</string>
 </resources>

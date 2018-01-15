@@ -4,6 +4,8 @@ import android.media.Image;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.Editable;
+import android.util.Log;
+import android.view.KeyEvent;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -58,18 +60,46 @@ public class LearningActivity extends AppCompatActivity {
         compareButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-               String comparer = text.getText().toString();
-                if(comparer.equals(correctName)){
-                    hiScore++;
-                    Toast.makeText(LearningActivity.this, getString(R.string.correctGuess) + hiScore, Toast.LENGTH_SHORT).show();
+               checkAnswer();
+            }
+        });
+        text.setOnKeyListener(new View.OnKeyListener() {
+            @Override
+            public boolean onKey(View v, int keyCode, KeyEvent event) {
+                if (keyCode == KeyEvent.KEYCODE_ENTER && event.getAction() == KeyEvent.ACTION_DOWN) {
+                    checkAnswer();
                 }
+                return false;
             }
         });
     }
 
     private void changeStudent(){
-        StudentId = r.nextInt(students.size());
+        StudentId = generateStudentId();
         image.setImageBitmap(students.get(StudentId).getPicture());
         correctName = students.get(StudentId).getName();
+        text.getText().clear();
+    }
+    /*
+    return a new id that is different from the one contained in StudentId
+     */
+    private int generateStudentId(){
+        int temp = r.nextInt(students.size());
+        while(temp == StudentId)
+            temp = r.nextInt(students.size());
+        return temp;
+    }
+
+
+    private void checkAnswer(){
+        String comparer = text.getText().toString();
+        if(comparer.equals(correctName)){
+            hiScore++;
+            Toast.makeText(LearningActivity.this, getString(R.string.correctGuess) + hiScore, Toast.LENGTH_SHORT).show();
+        }
+        else{
+            Toast.makeText(LearningActivity.this, getString(R.string.wrongGuess) + correctName, Toast.LENGTH_SHORT).show();
+        }
+        changeStudent();
     }
 }
