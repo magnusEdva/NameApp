@@ -18,6 +18,7 @@ public class HomeScreen extends AppCompatActivity {
     private Button learningmodeBtn;
     private ImageButton addUserBtn;
     ArrayList<StudentDataModel> students = new ArrayList<>();
+    static final int NEW_USER_REQUEST = 1;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -65,9 +66,26 @@ public class HomeScreen extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent redirectToAddNew = new Intent(HomeScreen.this, AddNewStudent.class);
-                startActivity(redirectToAddNew);
+                startActivityForResult(redirectToAddNew, NEW_USER_REQUEST);
             }
         });
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        // Sjekker requesten
+        System.out.println("test1");
+        if (requestCode == NEW_USER_REQUEST) {
+            System.out.println("test2");
+            // Sjekker om request er great success
+            if (resultCode == RESULT_OK) {
+                System.out.println("test3");
+
+                StudentDataModel student = (StudentDataModel) data.getExtras().getSerializable("student");
+                students.add(student);
+                System.out.println(student.getName());
+            }
+        }
     }
 
     // Sets dummy data.

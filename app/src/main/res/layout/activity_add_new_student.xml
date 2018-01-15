@@ -9,10 +9,13 @@
     android:padding="20dp"
     tools:context="hvl.nameapp.AddNewStudent">
 
-    <ImageView
+    <ImageButton
         android:id="@+id/student_image"
         android:layout_width="250dp"
-        android:layout_height="250dp" />
+        android:layout_height="250dp"
+        android:scaleType="centerCrop"
+        android:padding="0dp"
+        android:src="@drawable/ic_launcher_background"/>
 
     <EditText
         android:id="@+id/nameInput"
