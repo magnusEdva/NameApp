@@ -34,19 +34,18 @@ public class LearningActivity extends AppCompatActivity {
         createView();
         setupComparison();
         hiScore = 0;
-        StudentId = r.nextInt(students.size());
-        image.setImageBitmap(students.get(StudentId).getPicture());
-        correctName = students.get(StudentId).getName();
+        changeStudent();
+
 
     }
     @Override
     protected  void onDestroy(){
-        Toast.makeText(LearningActivity.this, "Score: " + hiScore, Toast.LENGTH_SHORT).show();
+        Toast.makeText(LearningActivity.this, getString(R.string.showScore) + hiScore, Toast.LENGTH_SHORT).show();
         super.onDestroy();
     }
     //fetches arraylist with students from Intent.
     private ArrayList<StudentDataModel> getStudents(){
-        return (ArrayList<StudentDataModel>) getIntent().getSerializableExtra("students");
+        return (ArrayList<StudentDataModel>) getIntent().getSerializableExtra(getString(R.string.students));
     }
 
     private void createView(){
@@ -62,9 +61,15 @@ public class LearningActivity extends AppCompatActivity {
                String comparer = text.getText().toString();
                 if(comparer.equals(correctName)){
                     hiScore++;
-                    Toast.makeText(LearningActivity.this, "Good job, current score: " + hiScore, Toast.LENGTH_SHORT).show();
+                    Toast.makeText(LearningActivity.this, getString(R.string.correctGuess) + hiScore, Toast.LENGTH_SHORT).show();
                 }
             }
         });
+    }
+
+    private void changeStudent(){
+        StudentId = r.nextInt(students.size());
+        image.setImageBitmap(students.get(StudentId).getPicture());
+        correctName = students.get(StudentId).getName();
     }
 }

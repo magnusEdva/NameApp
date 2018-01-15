@@ -22,7 +22,7 @@ public class NamesList extends ListActivity {
 
         // Retrieves intent data (Arraylist of students) from homeScreen class.
         Intent intent = getIntent();
-        students =(ArrayList<StudentDataModel>) intent.getSerializableExtra("students");
+        students =(ArrayList<StudentDataModel>) intent.getSerializableExtra(getString(R.string.students));
 
         //Param: App Context, Layout that contains a TextView for each string in array, String array.
         adapter = new ArrayAdapter<String>(getListView().getContext(), android.R.layout.simple_list_item_1,getAllNames());

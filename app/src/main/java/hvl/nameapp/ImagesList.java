@@ -25,7 +25,7 @@ public class ImagesList extends Activity {
 
         // Retrieves intent data (Arraylist of students) from homeScreen class.
         Intent intent = getIntent();
-        students = (ArrayList<StudentDataModel>) intent.getSerializableExtra("students");
+        students = (ArrayList<StudentDataModel>) intent.getSerializableExtra(getString(R.string.students));
 
         pictureGrid = (GridView) findViewById(R.id.imageList_PictureGrid);
 

@@ -38,7 +38,7 @@ public class HomeScreen extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent redirectToNameList = new Intent(HomeScreen.this, NamesList.class );
-                redirectToNameList.putExtra("students", students);
+                redirectToNameList.putExtra(getString(R.string.students), students);
                 startActivity(redirectToNameList);
             }
         });
@@ -47,7 +47,7 @@ public class HomeScreen extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent redirectToImagesList = new Intent(HomeScreen.this, ImagesList.class);
-                redirectToImagesList.putExtra("students", students);
+                redirectToImagesList.putExtra(getString(R.string.students), students);
                 startActivity(redirectToImagesList);
             }
         });
@@ -56,7 +56,7 @@ public class HomeScreen extends AppCompatActivity {
             @Override
             public void onClick(View v){
                 Intent redirectToLearningGame = new Intent(HomeScreen.this, LearningActivity.class);
-                redirectToLearningGame.putExtra("students", students);
+                redirectToLearningGame.putExtra(getString(R.string.students), students);
                 startActivity(redirectToLearningGame);
             }
         });
