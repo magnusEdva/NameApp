@@ -17,7 +17,7 @@ public class AddNewStudent extends AppCompatActivity {
     private Button addNewBtn;
     private Button cancelBtn;
     private ImageButton imageBtn;
-    private Bitmap imageBitmap;
+    private Bitmap imageBitmap = null;
 
     static final int REQUEST_IMAGE_CAPTURE = 1;
 
@@ -44,11 +44,14 @@ public class AddNewStudent extends AppCompatActivity {
                 EditText navnET = (EditText) findViewById(R.id.nameInput);
                 String navnString = navnET.getText().toString();
 
-                // Lage StudentDataModel-object?
-                StudentDataModel student = new StudentDataModel(navnString, imageBitmap);
-                Intent intent = getIntent();
-                intent.putExtra("student", student);
-                setResult(RESULT_OK, intent);
+                if (navnString.length() >= 1 && imageBitmap != null) {
+
+                    // Lage StudentDataModel-object?
+                    StudentDataModel student = new StudentDataModel(navnString, imageBitmap);
+                    Intent intent = getIntent();
+                    intent.putExtra("student", student);
+                    setResult(RESULT_OK, intent);
+                }
                 finish();
             }
         });
