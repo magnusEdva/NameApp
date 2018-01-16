@@ -2,7 +2,9 @@ package hvl.nameapp;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.graphics.Bitmap;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -14,7 +16,7 @@ import java.util.ArrayList;
 public class ImagesList extends Activity {
 
     ArrayList<StudentDataModel> students = new ArrayList<>();
-    ArrayAdapter<String> adapter;
+    ImageAdapter adapter;
     GridView pictureGrid;
 
     @Override
@@ -30,7 +32,7 @@ public class ImagesList extends Activity {
         pictureGrid = (GridView) findViewById(R.id.imageList_PictureGrid);
 
         //Param: App Context, Layout that contains a TextView for each string in array, String array.
-        adapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, getAllImages());
+        adapter = new ImageAdapter(this, getAllImages());
         pictureGrid.setAdapter(adapter);
         pictureGrid.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             public void onItemClick(AdapterView<?> parent, View v, int position, long id) {
@@ -53,10 +55,10 @@ public class ImagesList extends Activity {
     }
 
     // Help method for creating a String array of names from an arraylist of StudentModelData objects.
-    private String[] getAllImages(){
-        String[] studentImages = new String[students.size()];
-        for (int i = 0; i < studentImages.length; i++) {
-            // studentImages[i] = students.get(i).getPicture();
+    private ArrayList<Bitmap> getAllImages(){
+        ArrayList<Bitmap> studentImages = new ArrayList<Bitmap>();
+        for (int i = 0; i < students.size(); i++) {
+             studentImages.add(students.get(i).getPicture());
         }
         return  studentImages;
     }
