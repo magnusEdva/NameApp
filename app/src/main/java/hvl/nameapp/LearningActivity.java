@@ -25,6 +25,7 @@ public class LearningActivity extends AppCompatActivity {
     int StudentId;
     Random r;
     int hiScore;
+    int mistakes;
 
 
     @Override
@@ -36,6 +37,7 @@ public class LearningActivity extends AppCompatActivity {
         createView();
         setupComparison();
         hiScore = 0;
+        mistakes = 0;
         changeStudent();
 
 
@@ -110,7 +112,9 @@ public class LearningActivity extends AppCompatActivity {
             Toast.makeText(LearningActivity.this, getString(R.string.correctGuess) + hiScore, Toast.LENGTH_SHORT).show();
         }
         else{
-            Toast.makeText(LearningActivity.this, getString(R.string.wrongGuess) + correctName, Toast.LENGTH_SHORT).show();
+            mistakes++;
+            Toast.makeText(LearningActivity.this, getString(R.string.wrongGuess) + correctName + " Feil: " + mistakes
+                    , Toast.LENGTH_SHORT).show();
         }
         changeStudent();
     }
