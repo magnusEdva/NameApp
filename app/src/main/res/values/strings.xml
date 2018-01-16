@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">NameApp_Steffen</string>
+    <string name="app_name">NameApp</string>
     <string name="visNavn">Vis Navn</string>
     <string name="visBilder">Vis Bilder</string>
     <string name="learning">Læringsmodus</string>
