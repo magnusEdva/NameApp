@@ -34,6 +34,7 @@ public class ImagesList extends Activity {
         //Param: App Context, Layout that contains a TextView for each string in array, String array.
         adapter = new ImageAdapter(this, getAllImages());
         pictureGrid.setAdapter(adapter);
+
         pictureGrid.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             public void onItemClick(AdapterView<?> parent, View v, int position, long id) {
                 TextView name = (TextView) findViewById(R.id.imageList_nameTextView);
