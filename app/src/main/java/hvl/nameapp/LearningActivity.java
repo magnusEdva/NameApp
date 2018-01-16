@@ -40,6 +40,9 @@ public class LearningActivity extends AppCompatActivity {
 
 
     }
+    /*
+    generates the final hiscore toast
+     */
     @Override
     protected  void onDestroy(){
         Toast.makeText(LearningActivity.this, getString(R.string.showScore) + hiScore, Toast.LENGTH_SHORT).show();
@@ -49,7 +52,9 @@ public class LearningActivity extends AppCompatActivity {
     private ArrayList<StudentDataModel> getStudents(){
         return (ArrayList<StudentDataModel>) getIntent().getSerializableExtra(getString(R.string.students));
     }
-
+    /*
+    loads the view resources from the View
+     */
     private void createView(){
         image = (ImageView) findViewById(R.id.LearningGameImage);
         text = (EditText) findViewById(R.id.LearningGameText);
@@ -57,12 +62,14 @@ public class LearningActivity extends AppCompatActivity {
     }
 
     private void setupComparison(){
+       //enables the compareButton
         compareButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                checkAnswer();
             }
         });
+        //lets the user use the enter key on the keyboard instead of the button.
         text.setOnKeyListener(new View.OnKeyListener() {
             @Override
             public boolean onKey(View v, int keyCode, KeyEvent event) {
@@ -73,7 +80,9 @@ public class LearningActivity extends AppCompatActivity {
             }
         });
     }
-
+    /*
+    responsible for changing all necesary values for changing the student.
+     */
     private void changeStudent(){
         StudentId = generateStudentId();
         image.setImageBitmap(students.get(StudentId).getPicture());
@@ -90,7 +99,10 @@ public class LearningActivity extends AppCompatActivity {
         return temp;
     }
 
-
+    /*
+    Responsible for checking answer and increasing Hiscore if applicable.
+    also calls to change the student afterwards.
+     */
     private void checkAnswer(){
         String comparer = text.getText().toString();
         if(comparer.equals(correctName)){
