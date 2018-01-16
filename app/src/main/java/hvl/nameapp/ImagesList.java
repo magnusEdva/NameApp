@@ -36,7 +36,6 @@ public class ImagesList extends Activity {
         pictureGrid.setAdapter(adapter);
         pictureGrid.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             public void onItemClick(AdapterView<?> parent, View v, int position, long id) {
-
                 TextView name = (TextView) findViewById(R.id.imageList_nameTextView);
                 name.setText(students.get((int)id).getName());
                 name.setVisibility(View.VISIBLE);
