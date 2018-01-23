@@ -1,13 +1,10 @@
 package hvl.nameapp;
 
 import android.app.Activity;
-import android.content.Intent;
 import android.graphics.Bitmap;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
 import android.widget.GridView;
 import android.widget.TextView;
 
@@ -15,7 +12,7 @@ import java.util.ArrayList;
 
 public class ImagesList extends Activity {
 
-    ArrayList<StudentDataModel> students;
+    ArrayList<PersonDataModel> students;
     ImageAdapter adapter;
     GridView pictureGrid;
 

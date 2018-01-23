@@ -3,19 +3,10 @@ package hvl.nameapp;
 import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
 import android.graphics.drawable.TransitionDrawable;
-import android.media.Image;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.text.Editable;
-import android.transition.Explode;
-import android.transition.Fade;
-import android.transition.Transition;
-import android.transition.TransitionInflater;
-import android.transition.TransitionManager;
-import android.util.Log;
 import android.view.KeyEvent;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
@@ -26,7 +17,7 @@ import java.util.Random;
 
 public class LearningActivity extends AppCompatActivity {
 
-    ArrayList<StudentDataModel> students;
+    ArrayList<PersonDataModel> students;
     ImageView image;
     EditText text;
     Button compareButton;
@@ -59,7 +50,7 @@ public class LearningActivity extends AppCompatActivity {
         super.onDestroy();
     }
     //fetches arraylist with students from Context.
-    private ArrayList<StudentDataModel> getStudents(){
+    private ArrayList<PersonDataModel> getStudents(){
         NameApp na = (NameApp) getApplicationContext();
         return na.getStudents();
     }

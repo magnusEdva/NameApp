@@ -1,7 +1,6 @@
 package hvl.nameapp;
 
 import android.Manifest;
-import android.app.Activity;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.net.Uri;
@@ -57,12 +56,12 @@ public class AddNewStudent extends AppCompatActivity {
 
                 if (navnString.length() >= 1 && (imageBitmap != null || imageBytes != null)) {
 
-                    // Lage StudentDataModel-object?
-                    StudentDataModel student;
+                    // Lage PersonDataModel-object?
+                    PersonDataModel student;
                     if (imageBitmap != null) {
-                        student = new StudentDataModel(navnString, imageBitmap);
+                        student = new PersonDataModel(navnString, imageBitmap);
                     } else {
-                        student = new StudentDataModel(navnString, imageBitmap);
+                        student = new PersonDataModel(navnString, imageBitmap);
                     }
                     NameApp context = (NameApp) getApplicationContext();
                     context.addStudent(student);

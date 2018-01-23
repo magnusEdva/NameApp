@@ -1,10 +1,7 @@
 package hvl.nameapp;
 
 import android.app.Application;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
 
-import java.io.File;
 import java.util.ArrayList;
 
 /**
@@ -12,22 +9,23 @@ import java.util.ArrayList;
  */
 
 public class NameApp extends Application {
-    private ArrayList<StudentDataModel> students;
+    private PersonManager persons;
 
     @Override
     public void onCreate() {
         super.onCreate();
-        if (students == null)
-            students = new ArrayList<StudentDataModel>();
+
+        //supermegaimportantline - sets the directory persons finds their pictures in
+        PersonDataModel.dir = this.getFilesDir().getPath();
+
+        persons = new PersonManager(this);
     }
 
-    public ArrayList<StudentDataModel> getStudents() {
-        return students;
+    public ArrayList<PersonDataModel> getStudents() {
+        return persons.getPersons();
     }
 
-    public void addStudent(StudentDataModel s) {
-        students.add(s);
-    }
+    public void addStudent(PersonDataModel s) {persons.addPerson(s);}
 
 
 }

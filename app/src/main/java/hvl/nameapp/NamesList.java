@@ -1,7 +1,6 @@
 package hvl.nameapp;
 
 import android.app.ListActivity;
-import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
@@ -12,7 +11,7 @@ import java.util.ArrayList;
 
 public class NamesList extends ListActivity {
 
-    ArrayList<StudentDataModel> students = new ArrayList<>();
+    ArrayList<PersonDataModel> students;
     ArrayAdapter<String> adapter;
 
     @Override
