@@ -1,12 +1,21 @@
 package hvl.nameapp;
 
+import android.graphics.drawable.BitmapDrawable;
+import android.graphics.drawable.Drawable;
+import android.graphics.drawable.TransitionDrawable;
 import android.media.Image;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.Editable;
+import android.transition.Explode;
+import android.transition.Fade;
+import android.transition.Transition;
+import android.transition.TransitionInflater;
+import android.transition.TransitionManager;
 import android.util.Log;
 import android.view.KeyEvent;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
@@ -39,7 +48,6 @@ public class LearningActivity extends AppCompatActivity {
         hiScore = 0;
         mistakes = 0;
         changeStudent();
-
 
     }
     /*
@@ -87,10 +95,11 @@ public class LearningActivity extends AppCompatActivity {
      */
     private void changeStudent(){
         StudentId = generateStudentId();
-        image.setImageBitmap(students.get(StudentId).getPicture());
+        changeImage();
         correctName = students.get(StudentId).getName();
         text.getText().clear();
     }
+
     /*
     return a new id that is different from the one contained in StudentId
      */
@@ -117,5 +126,25 @@ public class LearningActivity extends AppCompatActivity {
                     , Toast.LENGTH_SHORT).show();
         }
         changeStudent();
+    }
+
+    /*
+    Transition animation between images
+     */
+    public void changeImage() {
+        //Create a bitmap drawable from the image to be shown
+        Drawable bitmapDrawable = new BitmapDrawable(getResources(), students.get(StudentId).getPicture());
+
+        Drawable[] layers = new Drawable[] {
+                image.getDrawable(), //Current image
+                bitmapDrawable // Next image
+        };
+
+        TransitionDrawable transitionDrawable = new TransitionDrawable(layers);
+
+        image.setImageDrawable(transitionDrawable);
+
+        int durationMillis = 500;
+        transitionDrawable.startTransition(durationMillis);
     }
 }
