@@ -64,9 +64,8 @@ public class AddNewStudent extends AppCompatActivity {
                     } else {
                         student = new StudentDataModel(navnString, imageBytes);
                     }
-                    Intent intent = getIntent();
-                    intent.putExtra("student", student);
-                    setResult(RESULT_OK, intent);
+                    NameApp context = (NameApp) getApplicationContext();
+                    context.addStudent(student);
                     Toast.makeText(getApplicationContext(), navnString + " er lagt til!", Toast.LENGTH_SHORT).show();
                 } else if (navnString.length() < 1 && imageBitmap == null) {
                     Toast.makeText(getApplicationContext(), "Mangler bilde og navn", Toast.LENGTH_SHORT).show();
@@ -132,4 +131,6 @@ public class AddNewStudent extends AppCompatActivity {
             }
         }
     }
+
+
 }

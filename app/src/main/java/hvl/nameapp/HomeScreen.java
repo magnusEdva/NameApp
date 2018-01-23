@@ -17,7 +17,6 @@ public class HomeScreen extends AppCompatActivity {
     private Button showImagesBtn;
     private Button learningmodeBtn;
     private ImageButton addUserBtn;
-    ArrayList<StudentDataModel> students = new ArrayList<>();
     static final int NEW_USER_REQUEST = 1;
 
     @Override
@@ -25,8 +24,6 @@ public class HomeScreen extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home_screen);
 
-        //Initiate dummy data
-        onInit();
 
         //Linking Elements in the layout to Java code.
         showNamesBtn = (Button) findViewById(R.id.visNavn);
@@ -39,7 +36,6 @@ public class HomeScreen extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent redirectToNameList = new Intent(HomeScreen.this, NamesList.class );
-                redirectToNameList.putExtra(getString(R.string.students), students);
                 startActivity(redirectToNameList);
             }
         });
@@ -48,7 +44,6 @@ public class HomeScreen extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent redirectToImagesList = new Intent(HomeScreen.this, ImagesList.class);
-                redirectToImagesList.putExtra(getString(R.string.students), students);
                 startActivity(redirectToImagesList);
             }
         });
@@ -57,7 +52,6 @@ public class HomeScreen extends AppCompatActivity {
             @Override
             public void onClick(View v){
                 Intent redirectToLearningGame = new Intent(HomeScreen.this, LearningActivity.class);
-                redirectToLearningGame.putExtra(getString(R.string.students), students);
                 startActivity(redirectToLearningGame);
             }
         });
@@ -69,31 +63,5 @@ public class HomeScreen extends AppCompatActivity {
                 startActivityForResult(redirectToAddNew, NEW_USER_REQUEST);
             }
         });
-    }
-
-    @Override
-    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-        // Sjekker requesten
-        if (requestCode == NEW_USER_REQUEST) {
-            // Sjekker om request er great success
-            if (resultCode == RESULT_OK) {
-                StudentDataModel student = (StudentDataModel) data.getExtras().getSerializable("student");
-                students.add(student);
-                System.out.println(student.getName());
-            }
-        }
-    }
-
-    // Sets dummy data.
-    private void onInit(){
-        Bitmap b = BitmapFactory.decodeResource(getResources(), R.drawable.elmo);
-        StudentDataModel magnus = new StudentDataModel("Magnus", b);
-        b = BitmapFactory.decodeResource(getResources(), R.drawable.zoidberg);
-        StudentDataModel steffen = new StudentDataModel("Steffen", b);
-        b = BitmapFactory.decodeResource(getResources(), R.drawable.panda);
-        StudentDataModel kolbein = new StudentDataModel("Kolbein", b);
-        students.add(magnus);
-        students.add(steffen);
-        students.add(kolbein);
     }
 }

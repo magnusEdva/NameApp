@@ -15,7 +15,7 @@ import java.util.ArrayList;
 
 public class ImagesList extends Activity {
 
-    ArrayList<StudentDataModel> students = new ArrayList<>();
+    ArrayList<StudentDataModel> students;
     ImageAdapter adapter;
     GridView pictureGrid;
 
@@ -25,9 +25,9 @@ public class ImagesList extends Activity {
         setContentView(R.layout.activity_images_list);
 
 
-        // Retrieves intent data (Arraylist of students) from homeScreen class.
-        Intent intent = getIntent();
-        students = (ArrayList<StudentDataModel>) intent.getSerializableExtra(getString(R.string.students));
+        // Retrieves intent data (Arraylist of students) from application Context.
+        NameApp appContext = (NameApp) getApplicationContext();
+        students = appContext.getStudents();
 
         pictureGrid = (GridView) findViewById(R.id.imageList_PictureGrid);
 

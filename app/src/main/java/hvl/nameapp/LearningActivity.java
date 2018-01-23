@@ -58,9 +58,10 @@ public class LearningActivity extends AppCompatActivity {
         Toast.makeText(LearningActivity.this, getString(R.string.showScore) + hiScore, Toast.LENGTH_SHORT).show();
         super.onDestroy();
     }
-    //fetches arraylist with students from Intent.
+    //fetches arraylist with students from Context.
     private ArrayList<StudentDataModel> getStudents(){
-        return (ArrayList<StudentDataModel>) getIntent().getSerializableExtra(getString(R.string.students));
+        NameApp na = (NameApp) getApplicationContext();
+        return na.getStudents();
     }
     /*
     loads the view resources from the View
