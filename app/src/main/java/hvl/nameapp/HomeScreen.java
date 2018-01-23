@@ -23,8 +23,7 @@ public class HomeScreen extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home_screen);
-
-
+        onInit();
         //Linking Elements in the layout to Java code.
         showNamesBtn = (Button) findViewById(R.id.visNavn);
         showImagesBtn = (Button) findViewById(R.id.visBilder);
@@ -63,5 +62,22 @@ public class HomeScreen extends AppCompatActivity {
                 startActivityForResult(redirectToAddNew, NEW_USER_REQUEST);
             }
         });
+    }
+
+    // Sets dummy data.
+    private void onInit() {
+        StudentDataModel.dir = getFilesDir();
+        NameApp na = (NameApp) getApplicationContext();
+
+        Bitmap b = BitmapFactory.decodeResource(getResources(), R.drawable.elmo);
+        StudentDataModel magnus = new StudentDataModel("Magnus", b);
+        b = BitmapFactory.decodeResource(getResources(), R.drawable.zoidberg);
+        StudentDataModel steffen = new StudentDataModel("Steffen", b);
+        b = BitmapFactory.decodeResource(getResources(), R.drawable.panda);
+        StudentDataModel kolbein = new StudentDataModel("Kolbein", b);
+
+        na.addStudent(magnus);
+        na.addStudent(steffen);
+        na.addStudent(kolbein);
     }
 }

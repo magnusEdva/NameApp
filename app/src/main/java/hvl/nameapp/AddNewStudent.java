@@ -62,7 +62,7 @@ public class AddNewStudent extends AppCompatActivity {
                     if (imageBitmap != null) {
                         student = new StudentDataModel(navnString, imageBitmap);
                     } else {
-                        student = new StudentDataModel(navnString, imageBytes);
+                        student = new StudentDataModel(navnString, imageBitmap);
                     }
                     NameApp context = (NameApp) getApplicationContext();
                     context.addStudent(student);

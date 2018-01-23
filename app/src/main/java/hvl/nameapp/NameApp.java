@@ -4,6 +4,7 @@ import android.app.Application;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 
+import java.io.File;
 import java.util.ArrayList;
 
 /**
@@ -17,7 +18,7 @@ public class NameApp extends Application {
     public void onCreate() {
         super.onCreate();
         if (students == null)
-            onInit();
+            students = new ArrayList<StudentDataModel>();
     }
 
     public ArrayList<StudentDataModel> getStudents() {
@@ -28,19 +29,7 @@ public class NameApp extends Application {
         students.add(s);
     }
 
-    // Sets dummy data.
-    private void onInit() {
-        students = new ArrayList<StudentDataModel>();
-        Bitmap b = BitmapFactory.decodeResource(getResources(), R.drawable.elmo);
-        StudentDataModel magnus = new StudentDataModel("Magnus", b);
-        b = BitmapFactory.decodeResource(getResources(), R.drawable.zoidberg);
-        StudentDataModel steffen = new StudentDataModel("Steffen", b);
-        b = BitmapFactory.decodeResource(getResources(), R.drawable.panda);
-        StudentDataModel kolbein = new StudentDataModel("Kolbein", b);
-        students.add(magnus);
-        students.add(steffen);
-        students.add(kolbein);
-    }
+
 }
 
 
