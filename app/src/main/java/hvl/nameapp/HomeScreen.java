@@ -74,13 +74,9 @@ public class HomeScreen extends AppCompatActivity {
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         // Sjekker requesten
-        System.out.println("test1");
         if (requestCode == NEW_USER_REQUEST) {
-            System.out.println("test2");
             // Sjekker om request er great success
             if (resultCode == RESULT_OK) {
-                System.out.println("test3");
-
                 StudentDataModel student = (StudentDataModel) data.getExtras().getSerializable("student");
                 students.add(student);
                 System.out.println(student.getName());
