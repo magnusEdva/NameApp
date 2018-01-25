@@ -13,11 +13,12 @@ import android.widget.ImageView;
 import android.widget.Toast;
 
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Random;
 
 public class LearningActivity extends AppCompatActivity {
 
-    ArrayList<PersonDataModel> students;
+    List<PersonDataModel> students;
     ImageView image;
     EditText text;
     Button compareButton;
@@ -50,7 +51,7 @@ public class LearningActivity extends AppCompatActivity {
         super.onDestroy();
     }
     //fetches arraylist with students from Context.
-    private ArrayList<PersonDataModel> getStudents(){
+    private List<PersonDataModel> getStudents(){
         NameApp na = (NameApp) getApplicationContext();
         return na.getStudents();
     }
@@ -125,7 +126,7 @@ public class LearningActivity extends AppCompatActivity {
      */
     public void changeImage() {
         //Create a bitmap drawable from the image to be shown
-        Drawable bitmapDrawable = new BitmapDrawable(getResources(), students.get(StudentId).getPicture());
+        Drawable bitmapDrawable = new BitmapDrawable(getResources(), students.get(StudentId).getPictureAsBitmap());
 
         Drawable[] layers = new Drawable[] {
                 image.getDrawable(), //Current image

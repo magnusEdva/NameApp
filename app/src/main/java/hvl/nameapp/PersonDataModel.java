@@ -1,7 +1,11 @@
 package hvl.nameapp;
 
+import android.arch.persistence.room.ColumnInfo;
+import android.arch.persistence.room.Entity;
+import android.arch.persistence.room.PrimaryKey;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.support.annotation.NonNull;
 import android.util.Log;
 
 import java.io.File;
@@ -14,9 +18,14 @@ import java.net.URI;
 /**
  * Created by Steffen on 13.01.2018.
  */
-
+@Entity(tableName = "persons")
 public class PersonDataModel implements Serializable {
+    @ColumnInfo(name = "name")
     private String name;
+
+    @ColumnInfo(name = "picture")
+    @NonNull
+    @PrimaryKey
     private String picture;
 
     //path to files in system - kinda hacky set in NameApp.java onCreate
@@ -37,11 +46,24 @@ public class PersonDataModel implements Serializable {
         this.name = name;
         this.picture = picture;
     }
+
     public String getName() {
         return name;
     }
 
-    public Bitmap getPicture() {return fetchPicture();}
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getPicture() {
+        return picture;
+    }
+
+    public void setPicture(String picture) {
+        this.picture = picture;
+    }
+
+    public Bitmap getPictureAsBitmap() {return fetchPicture();}
 
     /**
      * Upon first initiating a Person stores their picture to disk

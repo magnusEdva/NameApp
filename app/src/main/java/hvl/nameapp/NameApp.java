@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created by zorri on 23/01/2018.
@@ -35,7 +36,7 @@ public class NameApp extends Application {
 
     }
 
-    public ArrayList<PersonDataModel> getStudents() {
+    public List<PersonDataModel> getStudents() {
         return persons.getPersons();
     }
 

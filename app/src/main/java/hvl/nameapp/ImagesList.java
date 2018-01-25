@@ -9,10 +9,11 @@ import android.widget.GridView;
 import android.widget.TextView;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class ImagesList extends Activity {
 
-    ArrayList<PersonDataModel> students;
+    List<PersonDataModel> students;
     ImageAdapter adapter;
     GridView pictureGrid;
 
@@ -55,7 +56,7 @@ public class ImagesList extends Activity {
     private ArrayList<Bitmap> getAllImages(){
         ArrayList<Bitmap> studentImages = new ArrayList<Bitmap>();
         for (int i = 0; i < students.size(); i++) {
-             studentImages.add(students.get(i).getPicture());
+             studentImages.add(students.get(i).getPictureAsBitmap());
         }
         return  studentImages;
     }

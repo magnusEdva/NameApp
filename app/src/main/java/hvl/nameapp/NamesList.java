@@ -8,10 +8,11 @@ import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class NamesList extends ListActivity {
 
-    ArrayList<PersonDataModel> students;
+    List<PersonDataModel> students;
     ArrayAdapter<String> adapter;
 
     @Override
@@ -33,8 +34,8 @@ public class NamesList extends ListActivity {
                 ImageView profileImage = (ImageView) findViewById(R.id.profilePicture_namelist);
 
                 // gets the ID (not index) of the image resource, and sets it on screen, also set the image to visible.
-                // int resourcePath = getResources().getIdentifier(students.get((int) id).getPicture(),"drawable",getPackageName());
-                profileImage.setImageBitmap(students.get((int) id).getPicture());
+                // int resourcePath = getResources().getIdentifier(students.get((int) id).getPictureAsBitmap(),"drawable",getPackageName());
+                profileImage.setImageBitmap(students.get((int) id).getPictureAsBitmap());
                 profileImage.setVisibility(View.VISIBLE);
             }
         });
