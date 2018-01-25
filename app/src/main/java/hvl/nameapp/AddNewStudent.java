@@ -38,12 +38,44 @@ public class AddNewStudent extends AppCompatActivity {
         setContentView(R.layout.activity_add_new_student);
 
         // Linking Elements in the layout to Java code.
+        getViews();
+
+        // OnClickListener "Add New Student" button
+        buttonFunctionality();
+
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        if (resultCode != RESULT_CANCELED) {
+            if (requestCode == REQUEST_IMAGE_CAPTURE && resultCode == RESULT_OK) {
+                Bundle extras = data.getExtras();
+                imageBitmap = (Bitmap) extras.get("data");
+                imageBtn.setImageBitmap(imageBitmap);
+            } else if (requestCode == GALLERY_REQUEST) {
+                Uri selectedImage = data.getData();
+                try {
+                    Bitmap imageBitmapFromMedia = MediaStore.Images.Media.getBitmap(getContentResolver(), selectedImage);
+                    ByteArrayOutputStream stream = new ByteArrayOutputStream();
+                    // Komprimerer bilde nokså hardt her
+                    imageBitmapFromMedia.compress(Bitmap.CompressFormat.JPEG, 20, stream);
+                    imageBytes = stream.toByteArray();
+                    galleryBtn.setImageBitmap(imageBitmapFromMedia);
+                } catch (IOException e) {
+                    Log.i("TAG", "Some exception " + e);
+                }
+            }
+        }
+    }
+
+    public void getViews() {
         addNewBtn = (Button) findViewById(R.id.add_button);
         cancelBtn = (Button) findViewById(R.id.cancel_btn);
         imageBtn = (ImageButton) findViewById(R.id.student_image);
         galleryBtn = (ImageButton) findViewById(R.id.student_image_folder);
+    }
 
-        // OnClickListener "Add New Student" button
+    public void buttonFunctionality() {
         addNewBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -105,30 +137,6 @@ public class AddNewStudent extends AppCompatActivity {
                 startActivityForResult(photoPicketIntent, GALLERY_REQUEST);
             }
         });
-
-    }
-
-    @Override
-    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-        if (resultCode != RESULT_CANCELED) {
-            if (requestCode == REQUEST_IMAGE_CAPTURE && resultCode == RESULT_OK) {
-                Bundle extras = data.getExtras();
-                imageBitmap = (Bitmap) extras.get("data");
-                imageBtn.setImageBitmap(imageBitmap);
-            } else if (requestCode == GALLERY_REQUEST) {
-                Uri selectedImage = data.getData();
-                try {
-                    Bitmap imageBitmapFromMedia = MediaStore.Images.Media.getBitmap(getContentResolver(), selectedImage);
-                    ByteArrayOutputStream stream = new ByteArrayOutputStream();
-                    // Komprimerer bilde nokså hardt her
-                    imageBitmapFromMedia.compress(Bitmap.CompressFormat.JPEG, 20, stream);
-                    imageBytes = stream.toByteArray();
-                    galleryBtn.setImageBitmap(imageBitmapFromMedia);
-                } catch (IOException e) {
-                    Log.i("TAG", "Some exception " + e);
-                }
-            }
-        }
     }
 
 
