@@ -42,6 +42,13 @@ public class NameApp extends Application {
     public void addStudent(PersonDataModel s) {persons.addPerson(s);}
 
 
+    public void addOwner(PersonDataModel student) {
+        persons.addPerson(student);
+        SharedPreferences sp = getSharedPreferences("preferences", MODE_PRIVATE);
+        SharedPreferences.Editor edit = sp.edit();
+        edit.putString("owner", student.getName());
+        edit.commit();
+    }
 }
 
 

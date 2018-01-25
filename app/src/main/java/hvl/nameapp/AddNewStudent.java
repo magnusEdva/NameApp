@@ -2,6 +2,7 @@ package hvl.nameapp;
 
 import android.Manifest;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.graphics.Bitmap;
 import android.net.Uri;
 import android.provider.MediaStore;
@@ -23,8 +24,7 @@ public class AddNewStudent extends AppCompatActivity {
     private Button cancelBtn;
     private ImageButton imageBtn;
     private ImageButton galleryBtn;
-    private Bitmap imageBitmap = null;
-    private byte[] imageBytes = null;
+    private Bitmap imageBitmap;
 
     static final int REQUEST_IMAGE_CAPTURE = 1;
     static final int GALLERY_REQUEST = 2;
@@ -32,16 +32,25 @@ public class AddNewStudent extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
+        imageBitmap = null;
         requestPermissions(new String[]{Manifest.permission.CAMERA},
                 10);
         setContentView(R.layout.activity_add_new_student);
 
+
         // Linking Elements in the layout to Java code.
         getViews();
 
+        boolean generateOwner = false;
+        String owner = getIntent().getStringExtra("makeOwner");
+        if(owner != null){
+            addNewBtn.setText("Opprett profil");
+            generateOwner = true;
+        }
+
+
         // OnClickListener "Add New Student" button
-        buttonFunctionality();
+        buttonFunctionality(generateOwner);
 
     }
 
@@ -59,7 +68,6 @@ public class AddNewStudent extends AppCompatActivity {
                     ByteArrayOutputStream stream = new ByteArrayOutputStream();
                     // Komprimerer bilde nokså hardt her
                     imageBitmapFromMedia.compress(Bitmap.CompressFormat.JPEG, 20, stream);
-                    imageBytes = stream.toByteArray();
                     galleryBtn.setImageBitmap(imageBitmapFromMedia);
                 } catch (IOException e) {
                     Log.i("TAG", "Some exception " + e);
@@ -75,7 +83,7 @@ public class AddNewStudent extends AppCompatActivity {
         galleryBtn = (ImageButton) findViewById(R.id.student_image_folder);
     }
 
-    public void buttonFunctionality() {
+    public void buttonFunctionality(final boolean generateOwner) {
         addNewBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -86,17 +94,18 @@ public class AddNewStudent extends AppCompatActivity {
 
 
 
-                if (navnString.length() >= 1 && (imageBitmap != null || imageBytes != null)) {
+                if (navnString.length() >= 1 && (imageBitmap != null)) {
 
                     // Lage PersonDataModel-object?
                     PersonDataModel student;
-                    if (imageBitmap != null) {
-                        student = new PersonDataModel(navnString, imageBitmap);
-                    } else {
-                        student = new PersonDataModel(navnString, imageBitmap);
-                    }
+                    student = new PersonDataModel(navnString, imageBitmap);
                     NameApp context = (NameApp) getApplicationContext();
-                    context.addStudent(student);
+                    if(generateOwner)
+                        context.addOwner(student);
+                    else
+                        context.addStudent(student);
+
+
                     Toast.makeText(getApplicationContext(), navnString + " er lagt til!", Toast.LENGTH_SHORT).show();
                 } else if (navnString.length() < 1 && imageBitmap == null) {
                     Toast.makeText(getApplicationContext(), "Mangler bilde og navn", Toast.LENGTH_SHORT).show();
