@@ -4,6 +4,7 @@ import android.Manifest;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.provider.MediaStore;
 import android.support.v7.app.AppCompatActivity;
@@ -64,11 +65,13 @@ public class AddNewStudent extends AppCompatActivity {
             } else if (requestCode == GALLERY_REQUEST) {
                 Uri selectedImage = data.getData();
                 try {
-                    Bitmap imageBitmapFromMedia = MediaStore.Images.Media.getBitmap(getContentResolver(), selectedImage);
+                    imageBitmap = MediaStore.Images.Media.getBitmap(getContentResolver(), selectedImage);
                     ByteArrayOutputStream stream = new ByteArrayOutputStream();
                     // Komprimerer bilde nokså hardt her
-                    imageBitmapFromMedia.compress(Bitmap.CompressFormat.JPEG, 20, stream);
-                    galleryBtn.setImageBitmap(imageBitmapFromMedia);
+                    imageBitmap.compress(Bitmap.CompressFormat.JPEG, 10, stream);
+                    byte[] byteArray = stream.toByteArray();
+                    imageBitmap = BitmapFactory.decodeByteArray(byteArray,0,byteArray.length);
+                    galleryBtn.setImageBitmap(imageBitmap);
                 } catch (IOException e) {
                     Log.i("TAG", "Some exception " + e);
                 }
@@ -91,7 +94,6 @@ public class AddNewStudent extends AppCompatActivity {
                 // Hente navn fra EditText
                 EditText navnET = (EditText) findViewById(R.id.nameInput);
                 String navnString = navnET.getText().toString();
-
 
 
                 if (navnString.length() >= 1 && (imageBitmap != null)) {
