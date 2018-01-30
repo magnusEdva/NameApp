@@ -5,4 +5,5 @@ package hvl.nameapp;
  */
 
 public class NamesListTest {
+
 }
