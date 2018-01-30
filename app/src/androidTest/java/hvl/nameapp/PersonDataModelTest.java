@@ -21,6 +21,8 @@ import static android.support.test.espresso.assertion.ViewAssertions.matches;
 import static android.support.test.espresso.matcher.ViewMatchers.isDisplayed;
 import static android.support.test.espresso.matcher.ViewMatchers.withId;
 import static android.support.test.espresso.matcher.ViewMatchers.withText;
+import static junit.framework.Assert.assertEquals;
+import static junit.framework.Assert.assertTrue;
 
 /**
  * Created by zorri on 30/01/2018.
@@ -33,6 +35,8 @@ public class PersonDataModelTest {
     PersonDataModel p;
     NameApp mContext;
     Bitmap b;
+    String name = "Test";
+
     @Rule
     public ActivityTestRule<HomeScreen> mActivity =
             new ActivityTestRule<>(HomeScreen.class);
@@ -43,7 +47,7 @@ public class PersonDataModelTest {
         mContext.setPersonDataModelFilePath();
 
         b = BitmapFactory.decodeResource(mContext.getResources(), R.drawable.elmo);
-        p = new PersonDataModel("Test", b);
+        p = new PersonDataModel(name, b);
     }
 
     @After
@@ -55,17 +59,25 @@ public class PersonDataModelTest {
     @Test
     public void createsFile() {
         File file = new File(PersonDataModel.dir + "/" + p.getPicture());
-        assert file.exists();
-    }
-
-    @Test
-    public void checkPicture(){
-        assert (p.getPictureAsBitmap().equals(b));
+        assertTrue(file.exists());
     }
 
     @Test
     public void deletePicture(){
+        assertTrue(p.deletePicture());
         File file = new File(PersonDataModel.dir + "/" + p.getPicture());
-        assert (file.delete());
+        assertTrue(!file.exists());
     }
+
+    @Test
+    public void sameName(){
+        Bitmap bitmap = BitmapFactory.decodeResource(mContext.getResources(), R.drawable.panda);
+        PersonDataModel test = new PersonDataModel(name, bitmap);
+
+
+        assertTrue(!p.getPicture().equals(test.getPicture()));
+        assertTrue(!p.getPictureAsBitmap().sameAs(test.getPictureAsBitmap()));
+    }
+
+
 }
