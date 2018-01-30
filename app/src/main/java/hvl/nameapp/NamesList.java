@@ -48,6 +48,8 @@ public class NamesList extends ListActivity {
                 // students.get((int) id)
                 NameApp context = (NameApp) getApplicationContext();
                 context.removeStudent(students.get((int) id));
+                adapter.notifyDataSetChanged();
+
                 return true;
             }
         });

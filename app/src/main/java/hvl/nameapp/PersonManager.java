@@ -48,6 +48,7 @@ public class PersonManager {
 
     // delete a person
     public void deletePerson(PersonDataModel p) {
+        p.deletePicture();
         persons.remove(p);
         new deletePerson(this).execute(p);
     }

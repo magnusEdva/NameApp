@@ -90,6 +90,17 @@ public class PersonDataModel implements Serializable {
         return name ;
     }
 
+    public boolean deletePicture() {
+        File picture = new File(dir + "/" + this.picture);
+        boolean deleted = false;
+        if (!picture.exists()){
+            Log.d("Picture", "No picture upon deletting " + name);
+        }
+        else
+            deleted = picture.delete();
+        return deleted;
+    }
+
     /**
      * fetches Bitmap picture from file with this.picture as path.
      * @return Bitmap picture
