@@ -25,7 +25,7 @@ public interface PersonDAO {
         void insertAll(PersonDataModel... persons);
 
         @Delete
-        void delete(PersonDataModel person);
+        void deletePerson(PersonDataModel person);
 
 
 }

@@ -46,6 +46,12 @@ public class PersonManager {
         new insertAll(this).execute(p);
     }
 
+    // delete a person
+    public void deletePerson(PersonDataModel p) {
+        persons.remove(p);
+        new deletePerson(this).execute(p);
+    }
+
     public List<PersonDataModel> getPersons() {
         return persons;
     }
@@ -104,7 +110,7 @@ public class PersonManager {
         }
     }
 
-    static class insertAll extends AsyncTask<PersonDataModel, Void, Void> {
+    private static class insertAll extends AsyncTask<PersonDataModel, Void, Void> {
 
         private WeakReference<PersonManager> managerReference;
 
@@ -119,4 +125,22 @@ public class PersonManager {
             return null;
         }
     }
+
+    private  static class deletePerson extends AsyncTask<PersonDataModel, Void, Void> {
+
+        private WeakReference<PersonManager> managerReference;
+
+        // only retain a weak reference to the activity
+        deletePerson(PersonManager pm) {
+            managerReference = new WeakReference<>(pm);
+        }
+
+        @Override
+        protected Void doInBackground(PersonDataModel... person) {
+            managerReference.get().getDatabase().personDAO().deletePerson(person[0]);
+            return null;
+        }
+    }
+
+
 }

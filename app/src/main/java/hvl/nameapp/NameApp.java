@@ -50,6 +50,17 @@ public class NameApp extends Application {
         edit.putString("owner", student.getName());
         edit.commit();
     }
+
+    public void removeStudent(PersonDataModel student) {
+        SharedPreferences sp = getSharedPreferences("preferences", MODE_PRIVATE);
+        SharedPreferences.Editor edit = sp.edit();
+        // dersom person er owner
+        String owner = sp.getString("owner", null);
+        if (owner.equals(student.getName())) {
+            edit.remove(owner);
+        }
+        persons.deletePerson(student);
+    }
 }
 
 
