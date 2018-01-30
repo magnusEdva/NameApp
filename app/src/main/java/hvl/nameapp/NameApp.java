@@ -62,7 +62,7 @@ public class NameApp extends Application {
         persons.deletePerson(student);
     }
 
-    public void setPersonDataModelFilePath(){
+    private void setPersonDataModelFilePath(){
         PersonDataModel.dir = this.getFilesDir().getPath();
     }
 }
