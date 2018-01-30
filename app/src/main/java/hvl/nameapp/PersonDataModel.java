@@ -76,7 +76,7 @@ public class PersonDataModel implements Serializable {
         try {
             Log.d("dir", dir + "/" + name);
             out = new FileOutputStream(dir + "/" + name);
-            picture.compress(Bitmap.CompressFormat.JPEG,20, out);
+            picture.compress(Bitmap.CompressFormat.JPEG,100, out);
         } catch (Exception e) {
             e.printStackTrace();
         }finally {
