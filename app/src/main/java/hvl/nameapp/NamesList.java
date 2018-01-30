@@ -7,6 +7,7 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ImageView;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -50,6 +51,7 @@ public class NamesList extends ListActivity {
             public boolean onItemLongClick(AdapterView<?> adapterView, View view, int position, long id) {
                 // students.get((int) id)
                 NameApp context = (NameApp) getApplicationContext();
+                Toast.makeText(getApplicationContext(), names.get((int) id) + " ble slettet", Toast.LENGTH_SHORT).show();
                 context.removeStudent(students.get((int) id));
                 names.remove((int) id);
                 adapter.notifyDataSetChanged();
