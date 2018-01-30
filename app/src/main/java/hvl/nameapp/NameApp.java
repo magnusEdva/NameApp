@@ -19,7 +19,7 @@ public class NameApp extends Application {
         super.onCreate();
 
         //supermegaimportantline - sets the directory persons finds their pictures in
-        PersonDataModel.dir = this.getFilesDir().getPath();
+        setPersonDataModelFilePath();
 
         persons = new PersonManager(this);
 
@@ -60,6 +60,10 @@ public class NameApp extends Application {
             edit.remove(owner);
         }
         persons.deletePerson(student);
+    }
+
+    public void setPersonDataModelFilePath(){
+        PersonDataModel.dir = this.getFilesDir().getPath();
     }
 }
 
