@@ -68,7 +68,7 @@ public class AddNewStudent extends AppCompatActivity {
                     imageBitmap = MediaStore.Images.Media.getBitmap(getContentResolver(), selectedImage);
                     ByteArrayOutputStream stream = new ByteArrayOutputStream();
                     // Komprimerer bilde nokså hardt her
-                    imageBitmap.compress(Bitmap.CompressFormat.JPEG, 10, stream);
+                    imageBitmap.compress(Bitmap.CompressFormat.JPEG, 20, stream);
                     byte[] byteArray = stream.toByteArray();
                     imageBitmap = BitmapFactory.decodeByteArray(byteArray,0,byteArray.length);
                     galleryBtn.setImageBitmap(imageBitmap);

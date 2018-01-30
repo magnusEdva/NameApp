@@ -16,6 +16,7 @@ public class NamesList extends ListActivity {
     List<PersonDataModel> students;
     ArrayAdapter<String> adapter;
     List<String> names;
+    ImageView profileImage;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -27,6 +28,7 @@ public class NamesList extends ListActivity {
         students = appContext.getStudents();
         //Param: App Context, Layout that contains a TextView for each string in array, String array.
         names = getAllNames();
+        profileImage = (ImageView) findViewById(R.id.profilePicture_namelist);
         adapter = new ArrayAdapter<String>(getListView().getContext(), android.R.layout.simple_list_item_1,names);
 
         //Sets the list.
@@ -34,7 +36,6 @@ public class NamesList extends ListActivity {
         getListView().setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                ImageView profileImage = (ImageView) findViewById(R.id.profilePicture_namelist);
 
                 // gets the ID (not index) of the image resource, and sets it on screen, also set the image to visible.
                 // int resourcePath = getResources().getIdentifier(students.get((int) id).getPictureAsBitmap(),"drawable",getPackageName());
@@ -52,6 +53,7 @@ public class NamesList extends ListActivity {
                 context.removeStudent(students.get((int) id));
                 names.remove((int) id);
                 adapter.notifyDataSetChanged();
+                profileImage.setVisibility(View.INVISIBLE);
 
                 return true;
             }
