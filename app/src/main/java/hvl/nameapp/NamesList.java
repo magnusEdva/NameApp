@@ -15,6 +15,7 @@ public class NamesList extends ListActivity {
 
     List<PersonDataModel> students;
     ArrayAdapter<String> adapter;
+    List<String> names;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -25,7 +26,8 @@ public class NamesList extends ListActivity {
         final NameApp appContext = (NameApp) getApplicationContext();
         students = appContext.getStudents();
         //Param: App Context, Layout that contains a TextView for each string in array, String array.
-        adapter = new ArrayAdapter<String>(getListView().getContext(), android.R.layout.simple_list_item_1,getAllNames());
+        names = getAllNames();
+        adapter = new ArrayAdapter<String>(getListView().getContext(), android.R.layout.simple_list_item_1,names);
 
         //Sets the list.
         getListView().setAdapter(adapter);
@@ -48,6 +50,7 @@ public class NamesList extends ListActivity {
                 // students.get((int) id)
                 NameApp context = (NameApp) getApplicationContext();
                 context.removeStudent(students.get((int) id));
+                names.remove((int) id);
                 adapter.notifyDataSetChanged();
 
                 return true;
@@ -66,10 +69,10 @@ public class NamesList extends ListActivity {
         });
     }
     // Help method for creating a String array of names from an arraylist of StudentModelData objects.
-    private String[] getAllNames(){
-        String[] studentNames = new String[students.size()];
-        for (int i = 0; i < studentNames.length; i++) {
-            studentNames[i] = students.get(i).getName();
+    private List<String> getAllNames(){
+        List<String> studentNames = new ArrayList<>();
+        for (int i = 0; i < students.size(); i++) {
+            studentNames.add(students.get(i).getName());
         }
         return  studentNames;
     }
