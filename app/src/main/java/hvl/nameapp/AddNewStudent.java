@@ -103,11 +103,12 @@ public class AddNewStudent extends AppCompatActivity {
                     PersonDataModel student;
                     student = new PersonDataModel(navnString, imageBitmap);
                     NameApp context = (NameApp) getApplicationContext();
-                    if(generateOwner)
+                    if(generateOwner) {
+                        student.setName(student.getName() + " (owner)");
                         context.addOwner(student);
-                    else
+                    } else {
                         context.addStudent(student);
-
+                    }
 
                     Toast.makeText(getApplicationContext(), navnString + " er lagt til!", Toast.LENGTH_SHORT).show();
                 } else if (navnString.length() < 1 && imageBitmap == null) {

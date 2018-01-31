@@ -57,7 +57,7 @@ public class NameApp extends Application {
         // dersom person er owner
         String owner = sp.getString("owner", "");
         if (owner.equals(student.getName())) {
-            edit.remove(owner);
+            edit.remove("owner");
             edit.commit();
         }
         persons.deletePerson(student);
