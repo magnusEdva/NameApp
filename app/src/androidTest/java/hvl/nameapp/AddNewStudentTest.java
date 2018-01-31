@@ -24,8 +24,11 @@ import static android.support.test.espresso.action.ViewActions.click;
 import static android.support.test.espresso.intent.Intents.intended;
 import static android.support.test.espresso.intent.matcher.IntentMatchers.hasAction;
 import static android.support.test.espresso.intent.matcher.IntentMatchers.hasComponent;
+import static android.support.test.espresso.intent.matcher.IntentMatchers.hasType;
 import static android.support.test.espresso.matcher.ViewMatchers.withId;
 import static junit.framework.Assert.*;
+import static org.hamcrest.CoreMatchers.allOf;
+import static org.hamcrest.CoreMatchers.is;
 import static org.hamcrest.EasyMock2Matchers.equalTo;
 
 /**
@@ -80,7 +83,8 @@ public class AddNewStudentTest {
     public void openGallery() {
 
         onView(withId(R.id.student_image_folder)).perform(click());
-        intended(hasAction(equalTo(Intent.ACTION_PICK)));
+        intended(allOf(hasAction(equalTo(Intent.ACTION_PICK)),hasType(is("image/*"))));
+
     }
 
 }

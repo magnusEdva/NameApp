@@ -55,7 +55,7 @@ public class NameApp extends Application {
         SharedPreferences sp = getSharedPreferences("preferences", MODE_PRIVATE);
         SharedPreferences.Editor edit = sp.edit();
         // dersom person er owner
-        String owner = sp.getString("owner", null);
+        String owner = sp.getString("owner", "");
         if (owner.equals(student.getName())) {
             edit.remove(owner);
             edit.commit();
