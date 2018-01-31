@@ -13,7 +13,7 @@ import java.util.List;
 
 public class ImagesList extends Activity {
 
-    List<PersonDataModel> students;
+    PersonManager students;
     ImageAdapter adapter;
     GridView pictureGrid;
 
@@ -23,20 +23,20 @@ public class ImagesList extends Activity {
         setContentView(R.layout.activity_images_list);
 
 
-        // Retrieves intent data (Arraylist of students) from application Context.
+        // Retrieves intent data (Arraylist of persons) from application Context.
         NameApp appContext = (NameApp) getApplicationContext();
         students = appContext.getStudents();
 
         pictureGrid = (GridView) findViewById(R.id.imageList_PictureGrid);
 
         //Param: App Context, Layout that contains a TextView for each string in array, String array.
-        adapter = new ImageAdapter(this, getAllImages());
+        adapter = new ImageAdapter(this, students.getAllPicturesAsBitmaps());
         pictureGrid.setAdapter(adapter);
 
         pictureGrid.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             public void onItemClick(AdapterView<?> parent, View v, int position, long id) {
                 TextView name = (TextView) findViewById(R.id.imageList_nameTextView);
-                name.setText(students.get((int)id).getName());
+                name.setText(students.getPerson((int)id).getName());
                 name.setVisibility(View.VISIBLE);
             }
         });
@@ -52,13 +52,5 @@ public class ImagesList extends Activity {
         });
     }
 
-    // Help method for creating a String array of names from an arraylist of StudentModelData objects.
-    private ArrayList<Bitmap> getAllImages(){
-        ArrayList<Bitmap> studentImages = new ArrayList<Bitmap>();
-        for (int i = 0; i < students.size(); i++) {
-             studentImages.add(students.get(i).getPictureAsBitmap());
-        }
-        return  studentImages;
-    }
 }
 

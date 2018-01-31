@@ -53,7 +53,7 @@ public class PersonManager {
         new deletePerson(this).execute(p);
     }
 
-    public List<PersonDataModel> getPersons() {
+    public final List<PersonDataModel> getPersons() {
         return persons;
     }
 
@@ -64,6 +64,35 @@ public class PersonManager {
     public PersonDatabase getDatabase() {
         return database;
     }
+
+    /**
+     * @return all names
+     */
+    public List<String> getAllNames(){
+        List<String> temp = new ArrayList<>();
+        for(PersonDataModel p : persons) temp.add(p.getName());
+        return temp;
+    }
+
+    public ArrayList<Bitmap> getAllPicturesAsBitmaps(){
+        ArrayList<Bitmap> temp = new ArrayList<>();
+        for(PersonDataModel p : persons) temp.add(p.getPictureAsBitmap());
+        return temp;
+    }
+
+    public int getSize(){
+        return persons.size();
+    }
+
+
+    /**
+     * @param index of Person to return
+     * @return person associated with index
+     */
+    public PersonDataModel getPerson(int index){
+        return persons.get(index);
+    }
+
 
 
     // Sets dummy data.
@@ -87,6 +116,7 @@ public class PersonManager {
 
         return temp;
     }
+
 
     private static class loadAll extends AsyncTask<Void, Void, List<PersonDataModel>> {
 

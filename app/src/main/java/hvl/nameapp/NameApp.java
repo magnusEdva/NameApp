@@ -36,8 +36,8 @@ public class NameApp extends Application {
 
     }
 
-    public List<PersonDataModel> getStudents() {
-        return persons.getPersons();
+    public final PersonManager getStudents() {
+        return persons;
     }
 
     public void addStudent(PersonDataModel s) {persons.addPerson(s);}

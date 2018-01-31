@@ -18,13 +18,15 @@ import java.util.Random;
 
 public class LearningActivity extends AppCompatActivity {
 
-    List<PersonDataModel> students;
+    PersonManager students;
     ImageView image;
     EditText text;
     Button compareButton;
     String correctName;
-    int StudentId;
+
     Random r;
+
+    int StudentId;
     int hiScore;
     int mistakes;
 
@@ -50,8 +52,8 @@ public class LearningActivity extends AppCompatActivity {
         Toast.makeText(LearningActivity.this, getString(R.string.showScore) + hiScore, Toast.LENGTH_SHORT).show();
         super.onDestroy();
     }
-    //fetches arraylist with students from Context.
-    private List<PersonDataModel> getStudents(){
+    //fetches arraylist with persons from Context.
+    private PersonManager getStudents(){
         NameApp na = (NameApp) getApplicationContext();
         return na.getStudents();
     }
@@ -89,7 +91,7 @@ public class LearningActivity extends AppCompatActivity {
     private void changeStudent(){
         StudentId = generateStudentId();
         changeImage();
-        correctName = students.get(StudentId).getName();
+        correctName = students.getPerson(StudentId).getName();
         text.getText().clear();
     }
 
@@ -97,9 +99,9 @@ public class LearningActivity extends AppCompatActivity {
     return a new id that is different from the one contained in StudentId
      */
     private int generateStudentId(){
-        int temp = r.nextInt(students.size());
+        int temp = r.nextInt(students.getSize());
         while(temp == StudentId)
-            temp = r.nextInt(students.size());
+            temp = r.nextInt(students.getSize());
         return temp;
     }
 
@@ -126,7 +128,7 @@ public class LearningActivity extends AppCompatActivity {
      */
     public void changeImage() {
         //Create a bitmap drawable from the image to be shown
-        Drawable bitmapDrawable = new BitmapDrawable(getResources(), students.get(StudentId).getPictureAsBitmap());
+        Drawable bitmapDrawable = new BitmapDrawable(getResources(), students.getPerson(StudentId).getPictureAsBitmap());
 
         Drawable[] layers = new Drawable[] {
                 image.getDrawable(), //Current image
