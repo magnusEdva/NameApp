@@ -71,5 +71,4 @@ public class HomeScreenTest {
         intended(hasComponent(AddNewStudent.class.getName()));
     }
 
-
 }
