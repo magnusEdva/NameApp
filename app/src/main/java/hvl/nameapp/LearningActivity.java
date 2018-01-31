@@ -90,8 +90,8 @@ public class LearningActivity extends AppCompatActivity {
      */
     private void changeStudent(){
         StudentId = generateStudentId();
-        changeImage();
         correctName = students.getPerson(StudentId).getName();
+        changeImage();
         text.getText().clear();
     }
 
@@ -138,8 +138,12 @@ public class LearningActivity extends AppCompatActivity {
         TransitionDrawable transitionDrawable = new TransitionDrawable(layers);
 
         image.setImageDrawable(transitionDrawable);
-
+        image.setTag(this.correctName);
         int durationMillis = 500;
         transitionDrawable.startTransition(durationMillis);
+    }
+
+    public String getImageTag(){
+        return (String) image.getTag();
     }
 }
