@@ -51,6 +51,7 @@ public class NamesList extends ListActivity {
                 // int resourcePath = getResources().getIdentifier(persons.get((int) id).getPictureAsBitmap(),"drawable",getPackageName());
                 profileImage.setImageBitmap(persons.getPerson((int) id).getPictureAsBitmap());
                 profileImage.setVisibility(View.VISIBLE);
+                profileImage.setTag(persons.getPerson((int) id).getName());
             }
         });
 
