@@ -93,7 +93,9 @@ public class PersonManager {
         return persons.get(index);
     }
 
-
+    public boolean containsPerson(PersonDataModel p){
+        return persons.contains(p);
+    }
 
     // Sets dummy data.
     private List<PersonDataModel> onInit() {
