@@ -36,7 +36,7 @@ public class NameApp extends Application {
 
     }
 
-    public final PersonManager getStudents() {
+    public PersonManager getStudents() {
         return persons;
     }
 
