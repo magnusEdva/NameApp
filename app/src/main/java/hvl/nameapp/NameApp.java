@@ -48,7 +48,7 @@ public class NameApp extends Application {
         SharedPreferences sp = getSharedPreferences("preferences", MODE_PRIVATE);
         SharedPreferences.Editor edit = sp.edit();
         edit.putString("owner", student.getName());
-        edit.commit();
+        edit.apply();
     }
 
     public void removeStudent(PersonDataModel student) {
@@ -58,7 +58,7 @@ public class NameApp extends Application {
         String owner = sp.getString("owner", "");
         if (owner.equals(student.getName())) {
             edit.remove("owner");
-            edit.commit();
+            edit.apply();
         }
         persons.deletePerson(student);
     }

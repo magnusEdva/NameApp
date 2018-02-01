@@ -55,8 +55,9 @@ public class LearningActivityTest {
         //make image udate
         guess("");
         //check again if tag corresponds correctly
-        tag =  testActivity.getActivity().getImageTag();
-        assertTrue(checkImageTag(tag));
+        String tagTwo =  testActivity.getActivity().getImageTag();
+        assertTrue(checkImageTag(tagTwo));
+        assertTrue(!tag.equals(tagTwo));
     }
 
     public void guess(String name){
