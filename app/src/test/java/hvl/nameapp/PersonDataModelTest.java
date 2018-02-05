@@ -1,8 +1,5 @@
 package hvl.nameapp;
 
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
-
 import org.junit.Before;
 import org.junit.Test;
 
