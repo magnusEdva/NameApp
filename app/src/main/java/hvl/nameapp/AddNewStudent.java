@@ -107,13 +107,13 @@ public class AddNewStudent extends AppCompatActivity {
                         context.addStudent(student);
                     }
 
-                    Toast.makeText(getApplicationContext(), navnString + " er lagt til!", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getApplicationContext(), navnString + getString(R.string.isAdded), Toast.LENGTH_SHORT).show();
                 } else if (navnString.length() < 1 && imageBitmap == null) {
-                    Toast.makeText(getApplicationContext(), "Mangler bilde og navn", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getApplicationContext(), R.string.missingNameAndImage, Toast.LENGTH_SHORT).show();
                 } else if (navnString.length() < 1) {
-                    Toast.makeText(getApplicationContext(), "Mangler navn", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getApplicationContext(), R.string.missingName, Toast.LENGTH_SHORT).show();
                 } else if (imageBitmap == null) {
-                    Toast.makeText(getApplicationContext(), "Mangler bilde", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getApplicationContext(), R.string.missingImage, Toast.LENGTH_SHORT).show();
                 }
                 finish();
             }
